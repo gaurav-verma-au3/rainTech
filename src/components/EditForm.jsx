@@ -35,8 +35,13 @@ const EditForm = ({
       onClick={closeForm}
     >
       <div
-        className="bg-white p-5 rounded"
-        style={{ height: "80vh", overflowY: "scroll" }}
+        className=" text-light p-5 rounded"
+        style={{
+          height: "80vh",
+          overflowY: "scroll",
+          maxWidth: "500px",
+          backgroundColor: "rgba(0,0,0,0.8)",
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         <form
@@ -65,6 +70,7 @@ const EditForm = ({
           <div className="form-group">
             <label>Title</label>
             <input
+              style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
               onChange={handleUpdate}
               type="text"
               name="title"
@@ -75,6 +81,7 @@ const EditForm = ({
           <div className="form-group">
             <label>Description</label>
             <textarea
+              style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
               onChange={handleUpdate}
               type="text"
               value={movieData.description}
@@ -85,6 +92,7 @@ const EditForm = ({
           <div className="form-group">
             <label>Year</label>
             <input
+              style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
               type="text"
               name="year"
               onChange={handleUpdate}
@@ -95,6 +103,7 @@ const EditForm = ({
           <div className="form-group">
             <label>Runtime</label>
             <input
+              style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
               type="text"
               name="runtime"
               onChange={handleUpdate}
@@ -106,6 +115,7 @@ const EditForm = ({
           <div className="form-group">
             <label>Poster</label>
             <input
+              style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
               type="text"
               name="poster"
               onChange={handleUpdate}
@@ -114,8 +124,12 @@ const EditForm = ({
             />
           </div>
 
-          <button type="submit" className="w-100 rounded-0 btn btn-primary">
-            Update
+          <button
+            type="submit"
+            className="w-100 btn"
+            style={{ backgroundColor: "rgb(229, 9, 20)" }}
+          >
+            {purpose === "edit" ? "Update" : "Add"}
           </button>
         </form>
       </div>

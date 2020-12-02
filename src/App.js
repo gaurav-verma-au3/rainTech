@@ -4,7 +4,10 @@ import Header from "./components/Header";
 import Auth from "./Pages/Auth";
 import Home from "./Pages/Home";
 function App() {
+  const [formName, setFormName] = useState("");
   const [user, setUser] = useState(null);
+  const [purpose, setPurpose] = useState(null);
+  const [movieData, setMovieData] = useState(null);
 
   useEffect(() => {
     if (!user) {
@@ -17,14 +20,31 @@ function App() {
 
   return (
     <div className="App" style={{ paddingTop: "10vh" }}>
-      <Header user={user} setUser={setUser} />
+      <Header
+        setMovieData={setMovieData}
+        setPurpose={setPurpose}
+        formName={formName}
+        setFormName={setFormName}
+        user={user}
+        setUser={setUser}
+      />
       {user ? (
         <Route path="/">
-          <Home setUser={setUser} />
+          <Home
+            purpose={purpose}
+            setPurpose={setPurpose}
+            movieData={movieData}
+            setMovieData={setMovieData}
+            setUser={setUser}
+          />
         </Route>
       ) : (
         <Route path="/">
-          <Auth setUser={setUser} />
+          <Auth
+            formName={formName}
+            setFormName={setFormName}
+            setUser={setUser}
+          />
         </Route>
       )}
     </div>

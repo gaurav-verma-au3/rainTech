@@ -10,44 +10,62 @@ const Register = ({ setFormName, formName }) => {
       style={{ height: "90vh" }}
     >
       <form
+        style={{
+          maxWidth: "500px",
+          backgroundColor: "rgba(0,0,0,0.8)",
+        }}
         onSubmit={(e) =>
           registerApiReq(NotificationManager, e, setError, setFormName)
         }
-        className="p-4 border border-sm rounded shadow shadow-sm"
+        className="p-5 text-light rounded"
       >
         <h3>Register</h3>
         <hr />
 
         <div className="form-group">
           <label>Email address</label>
-          <input name="email" type="email" className="form-control" />
+          <input
+            style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
+            name="email"
+            type="email"
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label>Password</label>
-          <input name="password" type="password" className="form-control" />
+          <input
+            style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
+            name="password"
+            type="password"
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label>Re-enter Password</label>
-          <input name="password2" type="password2" className="form-control" />
+          <input
+            style={{ backgroundColor: "#333", outline: "0", border: "0px" }}
+            name="password2"
+            type="password"
+            className="form-control"
+          />
         </div>
         {error ? (
           <div className="form-group">
-            <small className="text-danger text-center m-0 my-5 w-100">
+            <small
+              className=" text-center m-0 my-5 w-100"
+              style={{ color: "#e50914" }}
+            >
               {error}
             </small>
           </div>
         ) : null}
-        <button type="submit" className="w-100 rounded-0 btn btn-primary">
+        <button
+          type="submit"
+          className="w-100 btn my-3 "
+          style={{ backgroundColor: "rgb(229, 9, 20)" }}
+        >
           Register
         </button>
-        <div>
-          <button
-            className="btn w-100 btn-dark my-3 rounded-0"
-            onClick={(e) => setFormName("login")}
-          >
-            Go to Login
-          </button>
-        </div>
       </form>
     </div>
   );

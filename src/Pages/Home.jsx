@@ -3,9 +3,7 @@ import EditForm from "../components/EditForm";
 import MovieTiles from "../components/MovieTiles";
 import { getMovies } from "../requests";
 import NotificationsManager from "react-notifications/lib/NotificationManager";
-const Home = () => {
-  const [purpose, setPurpose] = useState(null);
-  const [movieData, setMovieData] = useState(null);
+const Home = ({ purpose, setPurpose, setMovieData, movieData }) => {
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState(null);
   useEffect(() => {
@@ -13,7 +11,10 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container-fluid">
+    <div
+      className="container-fluid pt-4 "
+      style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+    >
       {purpose && movieData ? (
         <EditForm
           purpose={purpose}
@@ -25,34 +26,19 @@ const Home = () => {
         />
       ) : null}
       <div className="row">
-        <div className="col-12 my-2 d-flex justify-content-end">
-          <button
-            className="btn btn-sm btn-primary rounded-0"
-            onClick={(e) => {
-              setMovieData({
-                title: "",
-                year: "",
-                runtime: "",
-                description: "",
-                poster: "",
-              });
-              setPurpose("add");
-            }}
-          >
-            ADD
-          </button>
-        </div>
         {movies ? (
           movies.map((m) => (
-            <MovieTiles
-              key={m._id}
-              setMovies={setMovies}
-              setPurpose={setPurpose}
-              movies={movies}
-              movieData={movieData}
-              setMovieData={setMovieData}
-              movie={m}
-            />
+            <div className="col-md-3 col-lg-3 col-sm-12 col-xs-12 d-flex justify-content-center mb-4">
+              <MovieTiles
+                key={m._id}
+                setMovies={setMovies}
+                setPurpose={setPurpose}
+                movies={movies}
+                movieData={movieData}
+                setMovieData={setMovieData}
+                movie={m}
+              />
+            </div>
           ))
         ) : (
           <div
